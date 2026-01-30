@@ -22,7 +22,7 @@ def pedir_edad():
             print("Eso no es un número")
 
 
-# Registrar alumnos
+
 while True:
     nombre = pedir_texto("Nombre: ")
     apellido = pedir_texto("Apellido: ")
@@ -44,7 +44,7 @@ while True:
         break
 
 
-# MENÚ PARA CONSULTAR INFORMES
+
 while True:
     print("\n=== CONSULTAR INFORMES ===")
     print("1. Ver informe de un alumno")
