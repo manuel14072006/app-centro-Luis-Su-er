@@ -22,29 +22,69 @@ def pedir_edad():
             print("Eso no es un número")
 
 
-
+# Registrar alumnos
 while True:
     nombre = pedir_texto("Nombre: ")
     apellido = pedir_texto("Apellido: ")
     edad = pedir_edad()
 
-    lista_alumnos.append((nombre, apellido, edad))
+    print(f"\n--- Notas para {nombre} {apellido} ---")
+    notas_alumno = notas()
+    asistencia = asistencias()
+
+    lista_alumnos.append({
+        "nombre": nombre,
+        "apellido": apellido,
+        "edad": edad,
+        "notas": notas_alumno,
+        "asistencia": asistencia
+    })
 
     if input("¿Quieres agregar otro alumno? (s/n): ").lower() != "s":
         break
 
 
+# MENÚ PARA CONSULTAR INFORMES
+while True:
+    print("\n=== CONSULTAR INFORMES ===")
+    print("1. Ver informe de un alumno")
+    print("2. Ver informes de todos")
+    print("3. Salir")
 
-print("\nAlumnos registrados:")
-for nombre, apellido, edad in lista_alumnos:
-    print(f"{nombre} {apellido} - {edad} años")
+    opcion = input("Elige una opción: ")
 
-    
+    if opcion == "1":
+        nombre_buscar = input("Nombre del alumno a buscar: ").lower()
 
-for nombre, apellido, edad in lista_alumnos:
-    print(f"\n--- Notas para {nombre} {apellido} ---")
+        encontrado = False
+        for alumno in lista_alumnos:
+            if alumno["nombre"].lower() == nombre_buscar:
+                informe(
+                    alumno["nombre"],
+                    alumno["apellido"],
+                    alumno["edad"],
+                    alumno["notas"],
+                    alumno["asistencia"]
+                )
+                encontrado = True
+                break
 
-    notas_alumno = notas()
-    asistencia = asistencias()
+        if not encontrado:
+            print("Alumno no encontrado")
 
-    informe(nombre, apellido, edad, notas_alumno, asistencia)
+    elif opcion == "2":
+        for alumno in lista_alumnos:
+            informe(
+                alumno["nombre"],
+                alumno["apellido"],
+                alumno["edad"],
+                alumno["notas"],
+                alumno["asistencia"]
+            )
+
+    elif opcion == "3":
+        print("Saliendo del programa...")
+        break
+
+    else:
+        print("Opción no válida")
