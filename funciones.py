@@ -20,9 +20,7 @@ def menu():
     time.sleep(0.5)
 
 
-# -------------------------
-# TUS FUNCIONES ORIGINALES
-# -------------------------
+
 
 def informacion():
     while True:
@@ -98,9 +96,7 @@ def informe(nombre, apellidos, edad, notas, asistencia):
     print(Fore.YELLOW + "=============================================================")
 
 
-# -------------------------
-# AQUÍ VA TODO TU MAIN ORIGINAL
-# -------------------------
+
 
 def app():
 
